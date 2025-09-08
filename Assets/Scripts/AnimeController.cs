@@ -4,6 +4,10 @@ using System.Collections.Generic;
 public class AnimeController : MonoBehaviour
 {
     public GameObject eyeGlass;
+    public GameObject camerPos1;
+    public GameObject camerPos2;
+    public GameObject playerPos1;
+    public GameObject playerPos2;
     public GameObject eyeGlassHandler;
     private GameObject oldParentHandler;
     private Animator animator;
@@ -12,6 +16,16 @@ public class AnimeController : MonoBehaviour
 
     void Start()
     {
+        Camera.main.transform.SetPositionAndRotation(
+            camerPos1.transform.position,
+            camerPos1.transform.rotation
+        );
+
+        transform.SetPositionAndRotation(
+            playerPos1.transform.position,
+            playerPos1.transform.rotation
+        );
+
         eyeGlass = GameObject.Find("EyeGlass");
         eyeGlassHandler = GameObject.Find("EyeGlassHandler");
         oldParentHandler = eyeGlass.transform.parent.gameObject;
@@ -38,6 +52,29 @@ public class AnimeController : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.RightShift))
+        {
+            Camera.main.transform.SetPositionAndRotation(
+                camerPos2.transform.position,
+                camerPos2.transform.rotation
+            );
+            transform.SetPositionAndRotation(
+                playerPos2.transform.position,
+                playerPos2.transform.rotation
+            );
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            Camera.main.transform.SetPositionAndRotation(
+                camerPos1.transform.position,
+                camerPos1.transform.rotation
+            );
+            transform.SetPositionAndRotation(
+                playerPos1.transform.position,
+                playerPos1.transform.rotation
+            );
+        }
+        
         print("anar lalar");
         foreach (var entry in animMap)
         {
