@@ -10,7 +10,6 @@ public class AnimeController : MonoBehaviour
     private bool[] toggle = new bool[10];
     private Dictionary<KeyCode, (string start, string stop, int index, string animName)> animMap;
 
-
     void Start()
     {
         eyeGlass = GameObject.Find("EyeGlass");
@@ -39,6 +38,7 @@ public class AnimeController : MonoBehaviour
 
     void Update()
     {
+        print("anar lalar");
         foreach (var entry in animMap)
         {
             if (Input.GetKeyDown(entry.Key))
